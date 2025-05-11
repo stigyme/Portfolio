@@ -111,20 +111,88 @@
         z-index: -1;
         animation: gradientShift 6s ease infinite;
         }
+          @keyframes slide-in-top {
+            0% {
+            opacity: 0;
+            transform: translateY(150px);
+            }
+            100% {
+            opacity: 1;
+            transform: translateY(0);
+            }
+        }
+
+        .animate-slide-in-top {
+            animation: slide-in-top 0.9s ease-out forwards;
+        }
+        .border-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(to right, transparent, #a855f7, transparent);
+            animation: glow-horizontal 2s linear infinite;
+        }
+
+        .border-glow::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #a855f7, transparent);
+            animation: glow-vertical 2s linear infinite 0.5s;
+        }
+
+        @keyframes glow-horizontal {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes glow-vertical {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+         /* Para navegadores WebKit (Chrome, Safari, Edge) */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1f1f1f; /* cor de fundo da trilha */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #7e57c2; /* roxo principal */
+            border-radius: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9d79e0; /* roxo mais claro no hover */
+        }
+
+        /* Para Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #7e57c2 #1f1f1f;
+        }
     </style>
 </head>
-          
+    <body style="overflow-x: hidden;">   
+         
         <div class="overflow-x-hidden md:overflow-hidden template-page bg-gray-900 text-gray-100">
             <div class="page-content">
                 <div class="max-w-4xl mx-auto w-full text-center">
-                    <div class="inline-block mb-8 glow-effect bg-gray-800 px-6 py-3 rounded-full border border-gray-700 ">
-                        <span class="text-violet-400 font-medium">DESIGN PREMIUM</span>
+                    <div class="inline-block mb-8 bg-gray-800 px-6 py-3 rounded-full border border-gray-700 ">
+                        <div class="absolute inset-0 border-glow z-0"></div>
+                        <span class="text-violet-400 font-medium z-10">DESIGN PREMIUM</span>
                     </div>
                     
                     <h1 class="text-4xl md:text-4xl lg:text-6xl font-bold mb-8 text-white ">
                         <span class="text-transparent bg-clip-text animated-glow-text">Landing pages <br>que vendem mais</span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-slate-200 mb-12 mr-2 ml-2 max-w-2xl mx-auto ">
+                    <p class="text-xl md:text-2xl text-slate-200 mb-12 mr-2 ml-2 max-w-2xl mx-auto animate-slide-in-top" >
                         Crio páginas de alta conversão com design estratégico, focadas em gerar resultados reais para negócios e infoprodutos.
                     </p>
                     
@@ -143,16 +211,16 @@
     <main class="container mx-auto px-4 py-12">
         <!-- Filtros -->
         <div class="flex flex-wrap justify-center gap-4 mb-12" id="fil">
-            <button class="px-4 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition filter-btn active" data-filter="all">
+            <button class="px-4 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition filter-btn active cursor-pointer" data-filter="all">
                 Todos
             </button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-violet-300 transition filter-btn" data-filter="cursos">
+            <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-violet-300 transition filter-btn cursor-pointer" data-filter="cursos">
                 Cursos
             </button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-violet-300 transition filter-btn" data-filter="landing">
+            <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-violet-300 transition filter-btn cursor-pointer" data-filter="landing">
                 Landing Pages
             </button>
-            <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-violet-300 transition filter-btn" data-filter="vendas">
+            <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full hover:bg-violet-300 transition filter-btn cursor-pointer" data-filter="vendas">
                 Página de Vendas
             </button>
         </div>
@@ -229,8 +297,8 @@
                                 Ver detalhes <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                             <div class="flex space-x-2">
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">High Ticket</span>
-                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Wordpress</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Área do Aluno</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">React</span>
                             </div>
                         </div>
                     </div>
@@ -361,7 +429,7 @@
                     <p class="text-gray-300">Interessado em trabalhar juntos? Vamos conversar!</p>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="https://wa.me/5584996913901?text=Ol%C3%A1%20Arthur%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20realizar%20um%20or%C3%A7amento%20para%20meu%20projeto" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition">
+                    <a href="https://wa.me/5584996913901?text=Ol%C3%A1%20Arthur%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20realizar%20um%20or%C3%A7amento%20para%20meu%20projeto" class="bg-violet-600 hover:bg-violet-700 text-white px-6 py-3 rounded-full font-medium transition">
                         Solicitar Orçamento
                     </a>
                     <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-full font-medium transition">
